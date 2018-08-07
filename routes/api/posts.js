@@ -71,3 +71,5 @@ app.delete('/delete', passport.authenticate('jwt', {session : false}),
         res.json({ success : ture});
     });
 })
+
+module.exports = app;
