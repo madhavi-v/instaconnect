@@ -1,0 +1,24 @@
+{
+  "name": "instaconnect",
+  "version": "1.0.0",
+  "description": "Instagram app",
+  "main": "server.js",
+  "scripts": {
+    "start" : "nodemon server.js"
+    
+  },
+  "author": "Madhavi",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.6",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
