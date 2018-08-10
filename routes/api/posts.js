@@ -12,7 +12,7 @@ const app = express.Router();
 
 app.get('/', passport.authenticate('jwt', {session : false}),
 (req,res) => {
-    Posts.findOne({handle : req.profiles.handle})
+    Posts.findOne({handle : req.user.handle})
     .then(posts => {
         if(posts) res.json(posts);
         else {
@@ -46,9 +46,9 @@ app.post('/', passport.authenticate('jwt', {session : false}),
 //User posts create
 //@access private
 
-app.post('/', passport.authenticate('jwt', {session : false}),
+app.post('/comments', passport.authenticate('jwt', {session : false}),
 (req,res) => {
-    Posts.findOne({handle : req.profiles.handle})
+    Posts.findOne({handle : req.user.handle})
     .then(posts => {
         
         const newComment = {
@@ -60,15 +60,15 @@ app.post('/', passport.authenticate('jwt', {session : false}),
     }).catch(err => console.log(err));
 })
 
-//@route DELETE /api/posts/delete
+//@route DELETE /api/posts/:id
 //Delete a post
 //@access private
 
-app.delete('/delete', passport.authenticate('jwt', {session : false}),
+app.delete('/:id', passport.authenticate('jwt', {session : false}),
 (req,res) => {
     Posts.findByIdAndRemove({_id : req.params.id})
     .then(() => {
-        res.json({ success : ture});
+        res.json({ success : true});
     });
 })
 
