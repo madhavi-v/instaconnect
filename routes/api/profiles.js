@@ -65,7 +65,7 @@ appProf.get('/name/:name', passport.authenticate('jwt', {session : false}),
 appProf.post('/', passport.authenticate('jwt', {session : false}),
 (req,res) =>{
    //Get form fields
-   console.log("In POST");
+   //console.log("In POST");
    const profileFields = {};
    profileFields.user = req.user.id;
    if(req.body.name) profileFields.name = req.body.name;

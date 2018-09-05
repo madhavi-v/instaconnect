@@ -36,7 +36,8 @@ app.post('/', passport.authenticate('jwt', {session : false}),
         
         const newPost = new Posts({
             text : req.body.text,
-            handle : req.user.handle
+            handle : req.user.handle,
+            image : req.body.image
         });
         newPost.save().then(post => res.json(post));
     })

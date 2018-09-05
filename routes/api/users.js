@@ -11,12 +11,13 @@ const keys = require('../../config/keys');
 //Register user 
 //@access public
 app.post('/register', (req,res) => {
+    const errors = {};
     User.findOne({email : req.body.email})
     .then(user => {
         if(user) {
-            return res.status(400).json({
-                email : 'Email already exists'
-            });
+            errors.email = "Email already exists";
+            //console.log(errors);
+            return res.status(400).json(errors);
         } else {
             const newUser = new User({
                 id : req.body.id,
@@ -44,14 +45,14 @@ app.post('/register', (req,res) => {
 //Register user 
 //@access public
 app.post('/login', (req, res) => {
+    const errors = {};
     const email = req.body.email;
     const password = req.body.password;
     User.findOne({email})
     .then(user => {
         if(!user){
-            return res.json({
-                email : 'Could not find email. Please register and login.'
-            })
+            errors.email = "Could not find email. Please register and login.";
+            return res.status(400).json(errors)
         
         } else {
             bcrypt.compare(password, user.password)
@@ -72,10 +73,9 @@ app.post('/login', (req, res) => {
                         })
                         
                     } else {
-                        return res.json({
-                            msg : 'Please enter correct password'
-                        })
-                    }
+                        errors.password = "Please enter correct password"
+                        return res.status(400).json(errors)
+                      }
                 })
         }
     })

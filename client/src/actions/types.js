@@ -1,0 +1,7 @@
+export const ERR_DISPATCH = 'ERR_DISPATCH';
+export const REGISTER_DISPATCH = 'REGISTER_DISPATCH';
+export const SET_USER = 'SET_USER';
+export const CREATE_PROFILE = 'CREATE_PROFILE';
+export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
+export const CREATE_POST = 'CREATE_POST';
+export const GET_POST = 'GET_POST';

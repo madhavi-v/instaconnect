@@ -4,18 +4,22 @@
   "description": "Instagram app",
   "main": "server.js",
   "scripts": {
-    "start" : "nodemon server.js"
-    
+    "client-install": "npm install --prefix client",
+    "start": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start \" \"npm run client \""
   },
   "author": "Madhavi",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.6",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react-router-dom": "^4.3.1",
     "validator": "^10.4.0"
   },
   "devDependencies": {
